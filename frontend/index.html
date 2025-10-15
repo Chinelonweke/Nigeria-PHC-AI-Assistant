@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigeria PHC AI Assistant - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+                <h1>Nigeria PHC AI Assistant</h1>
+                <p>Primary Healthcare Management System</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="Enter your username" autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="Enter your password" autocomplete="current-password">
+                </div>
+
+                <div class="form-group">
+                    <label for="facility">Facility</label>
+                    <select id="facility" name="facility">
+                        <option value="">Select your facility</option>
+                        <option value="all">All Facilities (Admin)</option>
+                        <option value="phc_001">Wuse PHC</option>
+                        <option value="phc_002">Garki PHC</option>
+                        <option value="phc_003">Maitama PHC</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Login
+                </button>
+
+                <div class="demo-credentials">
+                    <p><small>Demo: username: <strong>admin</strong> / password: <strong>admin</strong></small></p>
+                </div>
+            </form>
+
+            <div class="login-footer">
+                <p>&copy; 2025 Nigeria PHC AI Assistant. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple login handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const facility = document.getElementById('facility').value;
+            
+            // Simple demo authentication
+            if (username === 'admin' && password === 'admin') {
+                // Store session
+                sessionStorage.setItem('user', JSON.stringify({
+                    username: username,
+                    facility: facility,
+                    loginTime: new Date().toISOString()
+                }));
+                
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Invalid credentials. Use admin/admin for demo.');
+            }
+        });
+    </script>
+</body>
+</html>

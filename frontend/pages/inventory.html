@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management - PHC AI Assistant</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .alert-card {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+        
+        .alert-CRITICAL {
+            background: #fee;
+            border-color: #e53e3e;
+        }
+        
+        .alert-WARNING {
+            background: #fffbeb;
+            border-color: #f59e0b;
+        }
+        
+        .alert-ATTENTION {
+            background: #eff6ff;
+            border-color: #3b82f6;
+        }
+        
+        .alert-OK {
+            background: #f0fdf4;
+            border-color: #10b981;
+        }
+        
+        .stock-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-critical { background: #e53e3e; color: white; }
+        .badge-warning { background: #f59e0b; color: white; }
+        .badge-ok { background: #10b981; color: white; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1>📦 Inventory Management</h1>
+            <button onclick="refreshData()" class="btn btn-primary">🔄 Refresh</button>
+        </header>
+
+        <!-- Summary Cards -->
+        <div class="grid-3">
+            <div class="stat-card">
+                <h3>Total Items</h3>
+                <div class="stat-value" id="totalItems">-</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>⚠️ Critical Alerts</h3>
+                <div class="stat-value" style="color: #e53e3e" id="criticalCount">-</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>🟡 Warnings</h3>
+                <div class="stat-value" style="color: #f59e0b" id="warningCount">-</div>
+            </div>
+        </div>
+
+        <!-- Stockout Predictions -->
+        <div class="chart-card">
+            <h3>🔮 Stockout Predictions</h3>
+            <div id="predictions-list">
+                <p style="color: #9ca3af">Loading predictions...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/inventory.js"></script>
+</body>
+</html>
